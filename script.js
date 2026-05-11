@@ -191,7 +191,7 @@ window.addEventListener('scroll', () => {
             ${e.descricao ? `<p class="ecard-desc">${esc(e.descricao)}</p>`    : ''}
             <div class="ecard-cta">
               <span class="ecard-buy"><i class="ri-ticket-2-fill"></i> Comprar Ingresso</span>
-              <span class="ecard-arr">&#8599;</span>
+              <i class="ri-arrow-right-up-long-line"></i>
             </div>
           </div>
         </a>`;
