@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Próximos Eventos — VIPER · Tubarão, SC</title>
+  <meta name="description"
+    content="Confira a programação completa da Hangar 737 — shows, festas e eventos em Tubarão, SC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+  <style>
+    /* ════════════════════════════════════
+   Aliases locais → variáveis de style.css
+   ════════════════════════════════════ */
+    :root {
+      --accent: var(--rust);
+      /* cor de destaque (antes --red)  */
+      --accent-soft: rgba(139, 74, 42, .08);
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-label: 'Barlow Condensed', sans-serif;
+      --fg: var(--cream);
+    }
+
+    /* ════════════════════════════════════
+   Logo badge "737"
+   ════════════════════════════════════ */
+    .logo-badge,
+    .footer-badge {
+      color: var(--rust);
+    }
+
+    /* ════════════════════════════════════
+   PAGE HERO
+   ════════════════════════════════════ */
+    .page-hero {
+      padding: 9rem 3.5rem 4rem;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 90% 50%, rgba(139, 74, 42, .06) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 10% 80%, rgba(196, 167, 114, .04) 0%, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+    }
+
+    .page-hero-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background-image: repeating-linear-gradient(0deg, rgba(234, 217, 180, .018) 0px, rgba(234, 217, 180, .018) 1px, transparent 1px, transparent 80px);
+    }
+
+    .page-hero-num {
+      position: absolute;
+      right: 3.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(8rem, 18vw, 18rem);
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(234, 217, 180, .05);
+      letter-spacing: .05em;
+      pointer-events: none;
+      z-index: 0;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-hero-eyebrow {
+      font-family: var(--font-label);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .5em;
+      text-transform: uppercase;
+      color: var(--tan);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .page-hero-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--tan);
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 8rem);
+      line-height: .88;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .page-hero h1 span {
+      -webkit-text-stroke: 2px var(--cream);
+      color: transparent;
+    }
+
+    .page-hero-sub {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-top: 1.2rem;
+      font-weight: 300;
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    /* ════════════════════════════════════
+   EVENTOS MAIN SECTION
+   ════════════════════════════════════ */
+    .eventos-section {
+      padding: 4rem 3.5rem 8rem;
+      background: var(--bg);
+      min-height: 60vh;
+    }
+
+    /* ════════════════════════════════════
+   FILTROS DE MÊS
+   ════════════════════════════════════ */
+    .filter-bar {
+      margin-bottom: 3.5rem;
+    }
+
+    .filter-label {
+      font-family: var(--font-label);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .45em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+
+    .filter-label::before {
+      content: '';
+      width: 14px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    .filter-months {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .fmonth {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--line);
+      padding: .45rem 1.4rem;
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+
+    .fmonth:hover {
+      color: var(--cream);
+      border-color: rgba(234, 217, 180, .25);
+    }
+
+    .fmonth.active {
+      color: var(--cream);
+      border-color: var(--rust);
+      background: var(--accent-soft);
+    }
+
+    .fmonth .fmonth-count {
+      font-family: var(--font-label);
+      font-size: .62rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--rust);
+      vertical-align: super;
+      margin-left: .3em;
+      font-style: normal;
+    }
+
+    .fmonth-all {
+      font-family: var(--font-label);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--line);
+      padding: .45rem 1.4rem;
+      cursor: pointer;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+
+    .fmonth-all:hover {
+      color: var(--cream);
+      border-color: rgba(234, 217, 180, .25);
+    }
+
+    .fmonth-all.active {
+      color: var(--bg);
+      border-color: var(--tan);
+      background: var(--tan);
+    }
+
+    .filter-divider {
+      height: 1px;
+      background: linear-gradient(to right, var(--rust), rgba(234, 217, 180, .06), transparent);
+      margin-top: 2rem;
+    }
+
+    /* Results count */
+    .results-info {
+      font-family: var(--font-label);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .results-info strong {
+      color: var(--tan);
+    }
+
+    /* ════════════════════════════════════
+   GRID DE EVENTOS
+   ════════════════════════════════════ */
+    .ev-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    /* Override do hover do ecard para usar --rust em vez de --red */
+    .ecard-new:hover {
+      border-color: rgba(139, 74, 42, .45) !important;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .6), 0 0 0 1px rgba(139, 74, 42, .1) !important;
+    }
+
+    /* Ocultar card filtrado */
+    .ecard-new.hidden {
+      display: none;
+    }
+
+    /* Separador de mês */
+    .month-separator {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.5rem 0 .5rem;
+      border-top: 1px solid var(--line);
+      margin-top: .5rem;
+    }
+
+    .month-separator:first-child {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .month-sep-label {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--cream);
+      white-space: nowrap;
+    }
+
+    .month-sep-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(139, 74, 42, .4), transparent);
+    }
+
+    .month-sep-count {
+      font-family: var(--font-label);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ════════════════════════════════════
+   EMPTY STATE
+   ════════════════════════════════════ */
+    .ev-empty {
+      display: none;
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+
+    .ev-empty i {
+      font-size: 3rem;
+      color: rgba(139, 74, 42, .3);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .ev-empty h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      letter-spacing: .1em;
+      color: rgba(234, 217, 180, .18);
+      margin-bottom: .5rem;
+    }
+
+    .ev-empty p {
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* Loading / Error */
+    .ev-loading {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.4rem;
+      padding: 6rem 0;
+      color: var(--muted);
+      font-family: var(--font-label);
+      font-size: .78rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+    }
+
+    .ev-error {
+      grid-column: 1 / -1;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 4rem 2rem;
+      text-align: center;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.8;
+    }
+
+    .ev-error i {
+      font-size: 2.5rem;
+      color: var(--rust);
+    }
+
+    .ev-error a {
+      color: var(--tan);
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--font-label);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+      margin-top: 2rem;
+    }
+
+    .back-link:hover {
+      color: var(--cream);
+    }
+
+    .back-link i {
+      font-size: 1rem;
+    }
+
+    /* ════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════ */
+    @media(max-width:1100px) {
+      .ev-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width:860px) {
+      .page-hero {
+        padding: 8rem 1.6rem 3rem;
+      }
+
+      .page-hero-num {
+        display: none;
+      }
+
+      .eventos-section {
+        padding: 3rem 1.6rem 6rem;
+      }
+
+      .ev-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .filter-months {
+        gap: 6px;
+      }
+
+      .fmonth {
+        font-size: .95rem;
+        padding: .4rem 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <a href="Index.html" class="logo">
+      <span class="logo-text">VIPER</span>
+    </a>
+    <ul class="nav-center">
+      <li><a href="Index.html">Sobre</a></li>
+      <li><a href="proximos-eventos.html" style="color:var(--cream);border-color:var(--tan);">Programação</a></li>
+      <li><a href="Index.html#galeria">Galeria</a></li>
+      <li><a href="Index.html#estrutura">Estrutura</a></li>
+      <li><a href="Index.html#informacoes">Informações</a></li>
+      <li><a href="Index.html#localizacao">Contato</a></li>
+    </ul>
+    <a href="https://api.whatsapp.com/send?phone=5548999380085" target="_blank" class="nav-cta">Fale Conosco</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="Index.html#sobre">Sobre</a>
+    <a href="proximos-eventos.html">Programação</a>
+    <a href="Index.html#galeria">Galeria</a>
+    <a href="Index.html#estrutura">Estrutura</a>
+    <a href="Index.html#informacoes">Informações</a>
+    <a href="Index.html#localizacao">Contato</a>
+    <a href="https://api.whatsapp.com/send?phone=5548999380085" target="_blank" class="mob-cta">Fale via WhatsApp</a>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-lines"></div>
+    <div class="page-hero-inner">
+      <p class="page-hero-eyebrow">VIPER · Tubarão, SC</p> <br>
+      <h1>PRÓXIMOS<br><span>EVENTOS</span></h1>
+      <p class="page-hero-sub">Confira a programação completa — shows, festas e eventos. Garanta seu ingresso com
+        antecedência.</p>
+      <a href="Index.html" class="back-link">
+        <i class="ri-arrow-left-line"></i> Voltar ao início
+      </a>
+    </div>
+  </section>
+
+  <!-- EVENTOS -->
+  <section class="eventos-section">
+
+    <!-- Filtros de mês -->
+    <div class="filter-bar" id="filter-bar" style="display:none;">
+      <p class="filter-label">Filtrar por mês</p>
+      <div class="filter-months" id="filter-months"></div>
+      <div class="filter-divider"></div>
+    </div>
+
+    <!-- Info de resultados -->
+    <div class="results-info" id="results-info" style="display:none;">
+      <strong id="results-count">0</strong> evento(s) encontrado(s)
+      <span id="results-period"></span>
+    </div>
+
+    <!-- Grid -->
+    <div class="ev-grid" id="ev-grid">
+      <div class="ev-loading">
+        <div class="eload-spinner"><span></span><span></span><span></span></div>
+        Carregando programação...
+      </div>
+      <div class="ev-error" id="ev-error">
+        <i class="ri-calendar-close-line"></i>
+        <p>Não foi possível carregar a programação.<br>
+          Consulte nossa agenda no
+          <a href="https://www.instagram.com/hangar737/" target="_blank">Instagram</a> ou
+          <a href="https://api.whatsapp.com/send?phone=5548999380085" target="_blank">WhatsApp</a>.
+        </p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo-row">
+          <span class="footer-wordmark">VIPER</span>
+        </div>
+        <p class="footer-tagline">A melhor casa de shows de Tubarão. Música, energia e noites que você não vai esquecer.
+        </p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/vipertubarao/" target="_blank" class="fsoc" aria-label="Instagram">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=55448996468671" target="_blank" class="fsoc"
+            aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+          </a>
+          <a href="https://linktr.ee/VIPERTUBARAO" target="_blank" class="fsoc" aria-label="Linktree">
+            <i class="ri-link-unlink"></i>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="Index.html#sobre">Sobre</a></li>
+          <li><a href="proximos-eventos.html">Programação</a></li>
+          <li><a href="Index.html#galeria">Galeria</a></li>
+          <li><a href="Index.html#estrutura">Estrutura</a></li>
+          <li><a href="Index.html#informacoes">Informações</a></li>
+          <li><a href="Index.html#localizacao">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <p>Av. Presidente Getúlio Vargas, 4667<br>Revoredo — Tubarão, SC</p><br>
+        <p><a href="tel:4899646-8671" style="color:var(--muted);text-decoration:none;">(48) 9 9646-8671</a></p><br>
+        <p><a href="https://api.whatsapp.com/send?phone=554899646-8671"
+            style="color:var(--tan);text-decoration:none;">(48) 9 9646-8671</a></p><br>
+        <p><a href="mailto:contato@viper.com.br"
+            style="color:var(--muted);text-decoration:none;">contato@viper.com.br</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Atendimento</h4>
+        <p><span style="color:var(--tan);">Seg — Sex</span><br>09:00 — 12:00<br>13:30 — 18:00<br><br>Sáb &amp; Dom:
+          Fechado</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 VIPER · Casa de Shows e Eventos · Tubarão, SC · Todos os direitos reservados</p>
+      <p class="footer-copy" style="opacity:.4;">viper.com.br</p>
+    </div>
+  </footer>
+
+  <script>
+    // ════════════════════════════════════════════════════════════════
+    //  CONFIGURAÇÃO
+    // ════════════════════════════════════════════════════════════════
+    const SHEET_ID = '1LvNA4Nq9uB7W3wezmRL-zYBTl2jj-qE3y4lXO79FwZs';
+
+    const MESES = [
+      'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ];
+
+    // ── Hamburger ──
+    const ham = document.getElementById('hamburger');
+    const mob = document.getElementById('mobile-menu');
+    ham.addEventListener('click', () => {
+      const isOpen = mob.classList.toggle('open');
+      ham.setAttribute('aria-expanded', isOpen);
+      const spans = ham.querySelectorAll('span');
+      if (isOpen) {
+        spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+      } else {
+        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      }
+    });
+    mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mob.classList.remove('open');
+      ham.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }));
+
+    // ── Header shadow ──
+    const hdr = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      hdr.style.boxShadow = window.scrollY > 10 ? '0 2px 24px rgba(0,0,0,.6)' : 'none';
+    });
+
+    // ════════════════════════════════════════════════════════════════
+    //  ESTADO GLOBAL
+    // ════════════════════════════════════════════════════════════════
+    let allEventos = [];
+    let activeFilter = 'all';
+
+    // ════════════════════════════════════════════════════════════════
+    //  PARSE DE DATA
+    // ════════════════════════════════════════════════════════════════
+    function parseData(str) {
+      if (!str) return null;
+      str = str.trim();
+
+      // DD/MM/YYYY ou DD/MM/YY
+      let m = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/);
+      if (m) {
+        let year = parseInt(m[3]);
+        if (year < 100) year += 2000;
+        return new Date(year, parseInt(m[2]) - 1, parseInt(m[1]));
+      }
+
+      // YYYY-MM-DD
+      m = str.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+      if (m) return new Date(parseInt(m[1]), parseInt(m[2]) - 1, parseInt(m[3]));
+
+      // "15 de Junho de 2025"
+      const nomeMeses = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+      m = str.toLowerCase().match(/(\d{1,2})\s+de\s+([a-záéíóúâêôãõç]+)(?:\s+de\s+(\d{4}))?/);
+      if (m) {
+        const day = parseInt(m[1]);
+        const mesIdx = nomeMeses.indexOf(m[2]);
+        const year = m[3] ? parseInt(m[3]) : new Date().getFullYear();
+        if (mesIdx >= 0) return new Date(year, mesIdx, day);
+      }
+
+      // "Sexta-feira, 15 de Junho de 2025"
+      m = str.toLowerCase().match(/[a-zçã-]+,?\s+(\d{1,2})\s+de\s+([a-záéíóúâêôãõç]+)(?:\s+de\s+(\d{4}))?/);
+      if (m) {
+        const nomeMeses2 = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+        const day = parseInt(m[1]);
+        const mesIdx = nomeMeses2.indexOf(m[2]);
+        const year = m[3] ? parseInt(m[3]) : new Date().getFullYear();
+        if (mesIdx >= 0) return new Date(year, mesIdx, day);
+      }
+
+      return null;
+    }
+
+    function mesKey(d) {
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+    }
+    function mesLabel(key) {
+      const [y, m] = key.split('-');
+      return `${MESES[parseInt(m) - 1]} ${y}`;
+    }
+
+    // ════════════════════════════════════════════════════════════════
+    //  RENDERIZAÇÃO
+    // ════════════════════════════════════════════════════════════════
+    function esc(str) {
+      return String(str)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function buildCard(e) {
+      const imgSrc = e.foto_drive_id
+        ? `https://drive.google.com/thumbnail?id=${e.foto_drive_id}&sz=w800`
+        : '';
+      const badge = [e.dia_da_semana, e.data, e.horario].filter(Boolean).join(' · ');
+      const linkUrl = e.link_ingresso || 'https://www.minha-entrada.com.br/';
+      const mk = e._mesKey || '';
+
+      return `
+    <a href="${esc(linkUrl)}" target="_blank" rel="noopener"
+       class="ecard-new" data-mes="${esc(mk)}">
+      <div class="ecard-img-wrap${imgSrc ? '' : ' ecard-img-fallback'}">
+        ${imgSrc
+          ? `<img src="${esc(imgSrc)}" alt="${esc(e.nome)}" class="ecard-img" loading="lazy"
+               onerror="this.parentElement.classList.add('ecard-img-fallback');this.remove();">`
+          : ''}
+        <div class="ecard-img-overlay"></div>
+        ${badge ? `<span class="ecard-badge">${esc(badge)}</span>` : ''}
+      </div>
+      <div class="ecard-body">
+        ${e.genero ? `<span class="ecard-tag">${esc(e.genero)}</span>` : ''}
+        <h3 class="ecard-name">${esc(e.nome)}</h3>
+        ${e.descricao ? `<p class="ecard-desc">${esc(e.descricao)}</p>` : ''}
+        <div class="ecard-cta">
+          <span class="ecard-buy"><i class="ri-ticket-2-fill"></i> Comprar Ingresso</span>
+          <span class="ecard-arr">&#8599;</span>
+        </div>
+      </div>
+    </a>`;
+    }
+
+    function renderGrid(filter) {
+      activeFilter = filter;
+      const grid = document.getElementById('ev-grid');
+
+      grid.querySelectorAll('.ecard-new, .month-separator, .ev-empty').forEach(el => el.remove());
+
+      const filtered = filter === 'all'
+        ? allEventos
+        : allEventos.filter(e => e._mesKey === filter);
+
+      const resInfo = document.getElementById('results-info');
+      const resCnt = document.getElementById('results-count');
+      const resPeriod = document.getElementById('results-period');
+      resInfo.style.display = 'flex';
+      resCnt.textContent = filtered.length;
+      resPeriod.textContent = filter === 'all' ? '' : `— ${mesLabel(filter)}`;
+
+      if (filtered.length === 0) {
+        grid.insertAdjacentHTML('beforeend', `
+      <div class="ev-empty" style="display:block;">
+        <i class="ri-calendar-2-line"></i>
+        <h3>Nenhum evento</h3>
+        <p>Não há eventos programados para este período.<br>Confira outros meses ou acompanhe o Instagram.</p>
+      </div>`);
+        return;
+      }
+
+      if (filter === 'all') {
+        const grupos = {};
+        const ordem = [];
+        allEventos.forEach(e => {
+          if (!grupos[e._mesKey]) { grupos[e._mesKey] = []; ordem.push(e._mesKey); }
+          grupos[e._mesKey].push(e);
+        });
+
+        ordem.forEach(mk => {
+          const count = grupos[mk].length;
+          grid.insertAdjacentHTML('beforeend', `
+        <div class="month-separator">
+          <span class="month-sep-label">${mesLabel(mk)}</span>
+          <span class="month-sep-line"></span>
+          <span class="month-sep-count">${count} evento${count > 1 ? 's' : ''}</span>
+        </div>
+        ${grupos[mk].map(buildCard).join('')}
+      `);
+        });
+      } else {
+        grid.insertAdjacentHTML('beforeend', filtered.map(buildCard).join(''));
+      }
+
+      document.querySelectorAll('.fmonth, .fmonth-all').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === filter);
+      });
+    }
+
+    // ════════════════════════════════════════════════════════════════
+    //  FILTROS — monta os botões
+    // ════════════════════════════════════════════════════════════════
+    function buildFilters(eventos) {
+      const mesCount = {};
+      eventos.forEach(e => {
+        if (!e._mesKey) return;
+        mesCount[e._mesKey] = (mesCount[e._mesKey] || 0) + 1;
+      });
+
+      const mesesOrdenados = Object.keys(mesCount).sort();
+      if (mesesOrdenados.length === 0) return;
+
+      const bar = document.getElementById('filter-bar');
+      const container = document.getElementById('filter-months');
+      bar.style.display = 'block';
+
+      const btnAll = document.createElement('button');
+      btnAll.className = 'fmonth-all active';
+      btnAll.dataset.filter = 'all';
+      btnAll.textContent = `Todos (${eventos.length})`;
+      btnAll.addEventListener('click', () => renderGrid('all'));
+      container.appendChild(btnAll);
+
+      mesesOrdenados.forEach(mk => {
+        const btn = document.createElement('button');
+        btn.className = 'fmonth';
+        btn.dataset.filter = mk;
+
+        const [y, m] = mk.split('-');
+        const nomeMes = MESES[parseInt(m) - 1];
+        btn.innerHTML = `${nomeMes} <span class="fmonth-count">${mesCount[mk]}</span> <small style="font-family:'Barlow Condensed',sans-serif;font-size:.6rem;letter-spacing:.1em;color:rgba(234,217,180,.22);margin-left:.2em;">${y}</small>`;
+
+        btn.addEventListener('click', () => renderGrid(mk));
+        container.appendChild(btn);
+      });
+    }
+
+    // ════════════════════════════════════════════════════════════════
+    //  CARGA — Google Sheets JSONP
+    // ════════════════════════════════════════════════════════════════
+    (function loadEventos() {
+      const grid = document.getElementById('ev-grid');
+      const errBox = document.getElementById('ev-error');
+      const cbName = '__hangarEventosCb';
+
+      function handleData(json) {
+        cleanup();
+        try {
+          const cols = (json.table.cols || []).map(c =>
+            (c.label || '').toLowerCase().trim()
+              .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+              .replace(/\s+/g, '_')
+          );
+          const rows = json.table.rows || [];
+
+          function ci(name) { return cols.indexOf(name); }
+          function cell(row, idx) {
+            if (idx < 0 || !row.c || !row.c[idx]) return '';
+            const c = row.c[idx];
+            return (c.f != null ? c.f : c.v != null ? c.v : '').toString().trim();
+          }
+
+          allEventos = rows
+            .map(row => ({
+              nome: cell(row, ci('nome')),
+              data: cell(row, ci('data')),
+              dia_da_semana: cell(row, ci('dia_da_semana')),
+              horario: cell(row, ci('horario')),
+              genero: cell(row, ci('genero')),
+              descricao: cell(row, ci('descricao')),
+              foto_drive_id: cell(row, ci('foto_drive_id')),
+              link_ingresso: cell(row, ci('link_ingresso')),
+              ativo: cell(row, ci('ativo')),
+            }))
+            .filter(e => e.nome && e.ativo.toLowerCase() === 'sim')
+            .map(e => {
+              const d = parseData(e.data);
+              return { ...e, _date: d, _mesKey: d ? mesKey(d) : null };
+            })
+            .sort((a, b) => {
+              if (!a._date && !b._date) return 0;
+              if (!a._date) return 1;
+              if (!b._date) return -1;
+              return a._date - b._date;
+            });
+
+          grid.querySelector('.ev-loading') && grid.querySelector('.ev-loading').remove();
+
+          if (allEventos.length === 0) {
+            grid.insertAdjacentHTML('beforeend', `
+          <div class="ev-empty" style="display:block;">
+            <i class="ri-calendar-2-line"></i>
+            <h3>Em breve</h3>
+            <p>Novos eventos serão anunciados em breve.<br>Acompanhe o Instagram para ficar por dentro.</p>
+          </div>`);
+            return;
+          }
+
+          buildFilters(allEventos);
+          renderGrid('all');
+
+        } catch (err) {
+          console.error('[Hangar737] Eventos:', err);
+          showError();
+        }
+      }
+
+      window[cbName] = handleData;
+      window.google = window.google || {};
+      window.google.visualization = window.google.visualization || {};
+      window.google.visualization.Query = window.google.visualization.Query || {};
+      window.google.visualization.Query.setResponse = json => window[cbName](json);
+
+      const timer = setTimeout(() => { cleanup(); showError(); }, 10000);
+
+      function cleanup() {
+        clearTimeout(timer);
+        delete window[cbName];
+        const s = document.getElementById('hangar-ev-script');
+        if (s) s.remove();
+      }
+      function showError() {
+        grid.querySelector('.ev-loading') && grid.querySelector('.ev-loading').remove();
+        errBox.style.display = 'flex';
+      }
+
+      const s = document.createElement('script');
+      s.id = 'hangar-ev-script';
+      s.src = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&callback=${cbName}&headers=1`;
+      s.onerror = () => { cleanup(); showError(); };
+      document.head.appendChild(s);
+    })();
+  </script>
+</body>
+
+</html>
