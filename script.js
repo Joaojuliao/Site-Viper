@@ -102,7 +102,7 @@ window.addEventListener('scroll', () => {
           horario:       cell(row, ci('horario')),
           genero:        cell(row, ci('genero')),
           descricao:     cell(row, ci('descricao')),
-          foto_drive_id: cell(row, ci('foto_drive_id')),
+          foto_drive_id: cell(row, ci('fotos_drive')),
           link_ingresso: cell(row, ci('link_ingresso')),
           ativo:         cell(row, ci('ativo')),
         }))
@@ -170,16 +170,16 @@ window.addEventListener('scroll', () => {
 
     grid.innerHTML = eventos.map(e => {
       const imgSrc  = e.foto_drive_id
-        ? `https://drive.google.com/thumbnail?id=${e.foto_drive_id}&sz=w800`
+        ? `https://drive.google.com/thumbnail?id=${e.foto_drive_id}&sz=w1200`
         : '';
       const badge   = [e.dia_da_semana, e.data, e.horario].filter(Boolean).join(' · ');
       const linkUrl = e.link_ingresso || 'https://www.minha-entrada.com.br/';
-
       return `
         <a href="${esc(linkUrl)}" target="_blank" rel="noopener" class="ecard-new reveal">
+        
           <div class="ecard-img-wrap${imgSrc ? '' : ' ecard-img-fallback'}">
             ${imgSrc
-              ? `<img src="${esc(imgSrc)}" alt="${esc(e.nome)}" class="ecard-img" loading="lazy"
+              ? `<img src="${imgSrc}" alt="${esc(e.nome)}" class="ecard-img" loading="lazy"
                    onerror="this.parentElement.classList.add('ecard-img-fallback');this.remove();">`
               : ''}
             <div class="ecard-img-overlay"></div>
@@ -196,7 +196,6 @@ window.addEventListener('scroll', () => {
           </div>
         </a>`;
     }).join('');
-
     grid.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   }
 })();
